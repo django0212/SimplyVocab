@@ -2,10 +2,6 @@ from flask import Flask, redirect, url_for, render_template, request
 import requests
 import jsonpath_ng
 import json, itertools
-import eng_to_ipa as p
-
-"""To run this app, type "python -m flask run" in the terminal, provided that you have named this file "app.py".
-In case it is named something else, type "set FLASK_APP=<name of the python file>" before typing "python -m flask run" in the terminal. On Mac or Linux, use "export" instead of "set" for the previous command."""
 
 app = Flask(__name__)
 
@@ -36,9 +32,12 @@ def defn(name):
         query_audio = jsonpath_ng.parse('[0].phonetics[*].audio[*]')
         for match in query_audio.find(entries):
                 audio_link = (json.dumps(match.value)).strip('"')
-
+        
+        #part of speech
         pos = []
+        #definitions
         defs = []
+        #examples
         expl = []
 
         for entry in entries:
@@ -49,7 +48,9 @@ def defn(name):
                     if "example" in definition:
                         expl.append(definition["example"])
         ding = itertools.zip_longest(pos, defs, expl)
+        #this is to show the play audio button only when a word is present
         aun = None
     except KeyError:
-        return render_template("lol.html")
+        #render wordnotfound.html if api doesn't return defs
+        return render_template("wordnotfound.html")
     return render_template("index.html", name=word, pronun=pronun, audio=audio_link, ding=ding, aun=aun)
