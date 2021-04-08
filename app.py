@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("base.html")
 
 
 @app.route('/', methods=['POST'])
@@ -18,7 +18,7 @@ def my_form_post():
     if text != "":
         return defn(text)
     else:
-        return render_template("index.html")
+        return render_template("base.html")
 
 
 def defn(name):
