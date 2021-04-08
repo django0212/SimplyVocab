@@ -44,32 +44,8 @@
         </div>
     </form>
     <br>
-    <div class="row">
-        <h2 class="display-6 ini">{{ name }}</h2>
-        <h4>{{ pronun }}</h4>
-    </div>
-    {% if aun == None %}
-        <audio id="player" src={{ audio }}></audio>
-        <br>
-        <div>
-            <button class="btn btn-light" onclick="document.getElementById('player').play()"><i
-                    class="fas fa-volume-up"></i></button>
-        </div>
-        <br>
-    {% endif %}
-    {% for p, d, e in ding %}
-        {% if p != None %}
-            <div class="card text-dark bg-light mb-3">
-            <div class="card-header"><strong><em>{{ p }}</em></strong></div>
-        {% endif %}
-    <div class="card-body">
-        <h5 class="card-title">{{ d }}</h5>
-        {% if e != None %}
-            <p class="card-text"><em>{{ e }}</em></p>
-        {% endif %}
-    </div>
-    </div>
-    {% endfor %}
+    {% block content %}
+    {% endblock %}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"

@@ -60,4 +60,4 @@ def defn(name):
     except KeyError:
         # render wordnotfound.html if api doesn't return defs
         return render_template("wordnotfound.html"), 404
-    return render_template("index.html", name=word, pronun=pronun, audio=audio_link, ding=ding, aun=aun)
+    return render_template("word.html", name=word, pronun=pronun, audio=audio_link, ding=ding, aun=aun)
