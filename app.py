@@ -12,7 +12,10 @@ def index():
 @app.route('/', methods=['POST'])
 def my_form_post():
     text = request.form['text']
-    return defn(text)
+    if text != "":
+        return defn(text)
+    else:
+        return render_template("index.html")
 
 def defn(name):
     url = "https://api.dictionaryapi.dev/api/v2/entries/en_US/{}".format(name)
