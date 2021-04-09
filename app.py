@@ -22,6 +22,11 @@ def my_form_post():
 
 
 def defn(name):
+    # Checks to see if there is a string with no blanks
+    if len(name.strip()) == 0:
+        return render_template("wordnotfound.html"), 404
+    # else, there must be valid letters inside
+
     url = "https://api.dictionaryapi.dev/api/v2/entries/en_US/{}".format(name)
 
     response = requests.get(url)
