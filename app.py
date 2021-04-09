@@ -56,9 +56,13 @@ def defn(name):
                     defs.append(definition["definition"])
                     if "example" in definition:
                         expl.append(definition["example"])
+                    else:
+                        expl.append("_")
                     if "synonyms" in definition:
                         syns.append(definition["synonyms"])
-        ding = zip_longest(pos, defs, expl, syns)
+                    else:
+                        syns.append("_")
+        ding = zip(pos, defs, expl, syns)
         # this is to show the play audio button only when a word is present
         aun = None
     except KeyError:
