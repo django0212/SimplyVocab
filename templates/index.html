@@ -69,6 +69,25 @@
         {% endif %}
         </div>
         </div>
+        {% if s != None %}
+        <div class="accordion" id="synonyms">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{loop.index}}" aria-expanded="false" aria-controls="collapseTwo">
+                    Synonyms
+                  </button>
+                </h2>
+                <div id="collapseTwo{{loop.index}}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    {% for x in s%}
+                    <span class="badge bg-light text-dark">{{x}}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+        </div>
+        <br>
+        {% endif %}
         {% endfor %}
     </div>
 
