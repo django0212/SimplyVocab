@@ -2,7 +2,6 @@ from flask import Flask, render_template, request
 import requests
 import jsonpath_ng
 import json
-from itertools import zip_longest
 
 app = Flask(__name__)
 
